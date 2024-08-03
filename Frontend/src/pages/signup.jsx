@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Menu from "./menu";
 
 function Copyright(props) {
   return (
@@ -29,16 +32,29 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const formdata = ({
+      firstname: data.get('firstName'),
+      lastName: data.get('lastName'),
       email: data.get('email'),
-      password: data.get('password'),
+      password: data.get('password')
     });
+    try {
+      const res = await axios.post('http://localhost:4000/Signup', formdata);
+      localStorage.setItem('id' , res.data);
+      navigate("/");
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert("Email Already Exist");
+    }
   };
 
   return (
+    <>
+    <Menu/>
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -127,5 +143,6 @@ export default function SignUp() {
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
+    </>
   );
 }

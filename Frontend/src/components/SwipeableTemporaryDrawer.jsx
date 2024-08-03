@@ -10,10 +10,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import LogoutIcon from '@mui/icons-material/Logout';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
 
 export default function SwipeableTemporaryDrawer() {
   
@@ -71,12 +72,19 @@ export default function SwipeableTemporaryDrawer() {
             </ListItemButton>
           </ListItem>
   
-          <ListItem>
+          {!(localStorage.getItem('id')) ? <ListItem>
             <ListItemButton onClick={() => navigate("/SignIn")}>
-              <ListItemIcon><ExitToAppIcon /></ListItemIcon>
-              <ListItemText primary="SignOut"/>
+              <ListItemIcon><LoginIcon /></ListItemIcon>
+              <ListItemText primary="SignIn"/>
             </ListItemButton>
           </ListItem>
+          :
+          <ListItem>
+            <ListItemButton onClick={() => localStorage.removeItem('id')}>
+              <ListItemIcon><LogoutIcon /></ListItemIcon>
+              <ListItemText primary="SignOut"/>
+            </ListItemButton>
+          </ListItem>}
   
         </List>
       </Box>

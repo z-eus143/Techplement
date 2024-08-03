@@ -11,7 +11,10 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Menu from "./menu";
 
 function Copyright(props) {
   return (
@@ -29,16 +32,26 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const navigate = useNavigate()
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const formdata = ({
       email: data.get('email'),
       password: data.get('password'),
     });
+    try {
+      const res = await axios.post('http://localhost:4000/signup/signin', formdata);
+      localStorage.setItem('id' , res.data.id);
+      navigate("/");
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
+    <>
+    <Menu/>
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -106,5 +119,6 @@ export default function SignIn() {
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
+    </>
   );
 }
