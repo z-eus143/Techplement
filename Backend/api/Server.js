@@ -24,3 +24,5 @@ mongoose.connect("mongodb+srv://Tanmay:Tanmay@atlascluster.yxup98a.mongodb.net/"
 .catch((error) => {
     console.log(error)
 })
+
+module.exports = app;
