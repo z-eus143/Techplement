@@ -11,7 +11,9 @@ app.use(json({limit: '50mb'}))
 app.use(cors())
 
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/" , (req,res) => {
+    res.send("Hello World")
+})
 
 app.use('/Signup', userRoutes);
 
@@ -24,5 +26,3 @@ mongoose.connect("mongodb+srv://Tanmay:Tanmay@atlascluster.yxup98a.mongodb.net/"
 .catch((error) => {
     console.log(error)
 })
-
-module.exports = app;

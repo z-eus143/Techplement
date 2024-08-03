@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon Server.js",
-    "build": "echo 'Build step not needed for Express app'"
+    "start": "nodemon Server.js"
   },
   "keywords": [],
   "author": "",
