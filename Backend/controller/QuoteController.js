@@ -39,7 +39,6 @@ const QuoteOD = async (req, res) => {
     const randomIndex = Math.floor(Math.random() * count);
     const randomQuote = await Quote.findOne().skip(randomIndex);
     res.json(randomQuote);
-    console.log(randomQuote)
 } catch (error) {
     res.status(500).send(error.message);
 }
