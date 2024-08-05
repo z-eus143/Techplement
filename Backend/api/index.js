@@ -2,8 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const { json } = require("body-parser")
-const userRoutes = require('./routes/UserRoute.js');
-const quoteRoutes = require('./routes/QuoteRoute.js')
+const userRoutes = require('../routes/UserRoute.js');
+const quoteRoutes = require('../routes/QuoteRoute.js')
 const port = 4000
 const app = express()
 
@@ -28,3 +28,5 @@ mongoose.connect("mongodb+srv://Tanmay:Tanmay@atlascluster.yxup98a.mongodb.net/"
 .catch((error) => {
     console.log(error)
 })
+
+module.exports = app;

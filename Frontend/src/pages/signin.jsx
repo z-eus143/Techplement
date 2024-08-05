@@ -14,6 +14,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Menu from "./menu";
+const baseUrl = import.meta.env.VITE_PROD_BASE_URL;
 
 function Copyright(props) {
   return (
@@ -40,7 +41,7 @@ export default function SignIn() {
       password: data.get('password'),
     });
     try {
-      const res = await axios.post('http://localhost:4000/signup/signin', formdata);
+      const res = await axios.post(`${baseUrl}/signup/signin`, formdata);
       localStorage.setItem('id' , res.data.id);
       localStorage.setItem('name' , res.data.firstname +" "+res.data.lastName);
       navigate("/");

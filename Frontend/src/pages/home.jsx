@@ -3,11 +3,12 @@ import axios from 'axios';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Menu from "./menu";
+const baseUrl = import.meta.env.VITE_PROD_BASE_URL;
 
 export default function Home() {
     const [quotes, setQuotes] = useState([]);
     useEffect(() => {
-      axios.get('http://localhost:4000/Quote/')
+      axios.get(`${baseUrl}/Quote/`)
         .then(response => {
           setQuotes(response.data);
         })

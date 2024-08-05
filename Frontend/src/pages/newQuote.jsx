@@ -3,6 +3,7 @@ import QuoteForm from '../components/addnewquote';
 import { Container, Typography } from '@mui/material';
 import axios from 'axios';
 import Menu from "./menu";
+const baseUrl = import.meta.env.VITE_PROD_BASE_URL;
 
 const NewQuote = () => {
   const handleQuoteSubmit = async (quote) => {
@@ -12,7 +13,7 @@ const NewQuote = () => {
       name: localStorage.getItem('name')
     });
     try {
-      const res = await axios.post('http://localhost:4000/Quote/add', formdata);
+      const res = await axios.post(`${baseUrl}/Quote/add`, formdata);
     } catch (error) {
       console.error('Error submitting form:', error);
     }
