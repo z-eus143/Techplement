@@ -2,8 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const { json } = require("body-parser")
-const userRoutes = require('./routes/UserRoute.js');
-const quoteRoutes = require('./routes/UserRoute.js')
+const userRoutes = require('../routes/UserRoute.js');
+const quoteRoutes = require('../routes/UserRoute.js')
 const port = 4000
 const app = express()
 
