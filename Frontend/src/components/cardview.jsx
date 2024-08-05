@@ -23,8 +23,9 @@ export default function Cardview({ cards }) {
             {cards.map((card, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
                 <MyCard
-                  title={card.title}
-                  description={card.description}
+                  id={card._id}
+                  title={card.writerName}
+                  description={card.quote}
                 />
               </Grid>
             ))}

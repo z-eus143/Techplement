@@ -1,11 +1,21 @@
 import React from 'react';
 import QuoteForm from '../components/addnewquote';
 import { Container, Typography } from '@mui/material';
+import axios from 'axios';
 import Menu from "./menu";
 
 const NewQuote = () => {
-  const handleQuoteSubmit = (quote) => {
-    console.log('New Quote Submitted:', quote);
+  const handleQuoteSubmit = async (quote) => {
+    const formdata = ({
+      quote: quote,
+      id: localStorage.getItem('id'),
+      name: localStorage.getItem('name')
+    });
+    try {
+      const res = await axios.post('http://localhost:4000/Quote/add', formdata);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (

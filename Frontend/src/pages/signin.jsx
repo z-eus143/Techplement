@@ -8,7 +8,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import axios from 'axios';
@@ -43,6 +42,7 @@ export default function SignIn() {
     try {
       const res = await axios.post('http://localhost:4000/signup/signin', formdata);
       localStorage.setItem('id' , res.data.id);
+      localStorage.setItem('name' , res.data.firstname +" "+res.data.lastName);
       navigate("/");
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -63,8 +63,8 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+          <Typography variant="h4">Q</Typography>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in to Quote Junction

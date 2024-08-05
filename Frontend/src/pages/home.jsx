@@ -1,8 +1,21 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Menu from "./menu";
 
 export default function Home() {
+    const [quotes, setQuotes] = useState([]);
+    useEffect(() => {
+      axios.get('http://localhost:4000/Quote/')
+        .then(response => {
+          setQuotes(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }, []);
+
     return(
         <>
         <Menu/>
@@ -11,11 +24,10 @@ export default function Home() {
         Quote of the Day
         </Typography>
         <Typography variant="h1" gutterBottom>
-        Tanmay is great for all the time, 
-        Tanmay is great for all the time.
+        {quotes.quote}
         </Typography>
         <Typography variant="h5" display="block" gutterBottom textAlign={'end'} marginRight={"100px"}>
-        ~ Tanmay
+        ~ {quotes.writerName}
         </Typography>
         </Box>
         </>

@@ -58,6 +58,21 @@ export default function SwipeableTemporaryDrawer() {
             </ListItemButton>
           </ListItem>
   
+          {!(localStorage.getItem('id')) ? <ListItem>
+            <ListItemButton onClick={() => navigate("/SignIn")}>
+              <ListItemIcon><LoginIcon /></ListItemIcon>
+              <ListItemText primary="SignIn"/>
+            </ListItemButton>
+          </ListItem>
+          : <>
+
+          <ListItem>
+            <ListItemButton onClick={() => navigate("/Newquote")}>
+              <ListItemIcon><AddToPhotosIcon /></ListItemIcon>
+              <ListItemText primary="Add New Quote"/>
+            </ListItemButton>
+          </ListItem>
+
           <ListItem>
             <ListItemButton onClick={() => navigate("/SavedQuote")}>
               <ListItemIcon><BookmarkAddIcon /></ListItemIcon>
@@ -66,25 +81,12 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
 
           <ListItem>
-            <ListItemButton onClick={() => navigate("/Newquote")}>
-              <ListItemIcon><AddToPhotosIcon /></ListItemIcon>
-              <ListItemText primary="Add New Quote"/>
-            </ListItemButton>
-          </ListItem>
-  
-          {!(localStorage.getItem('id')) ? <ListItem>
-            <ListItemButton onClick={() => navigate("/SignIn")}>
-              <ListItemIcon><LoginIcon /></ListItemIcon>
-              <ListItemText primary="SignIn"/>
-            </ListItemButton>
-          </ListItem>
-          :
-          <ListItem>
             <ListItemButton onClick={() => localStorage.removeItem('id')}>
               <ListItemIcon><LogoutIcon /></ListItemIcon>
               <ListItemText primary="SignOut"/>
             </ListItemButton>
-          </ListItem>}
+          </ListItem>
+          </>}
   
         </List>
       </Box>
