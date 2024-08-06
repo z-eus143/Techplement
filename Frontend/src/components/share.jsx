@@ -14,7 +14,7 @@ const ShareButton = ({ quote }) => {
   };
 
   const handleShare = (platform) => {
-    const url = 'https://techplement-three.vercel.app/';
+    const url = 'https://quotejunction.vercel.app/';
     const text = quote;
 
     if (platform === 'facebook') {
