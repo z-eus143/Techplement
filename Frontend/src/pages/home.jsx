@@ -4,7 +4,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import Menu from "./menu";
+import Menu from "../components/menu";
+import Copyright from '../components/copyright';
 const baseUrl = import.meta.env.VITE_PROD_BASE_URL;
 
 export default function Home() {
@@ -55,6 +56,7 @@ export default function Home() {
         ~ Posted By {quotes.writerName || <Skeleton style={{ width : "10%" }}/>}
         </Typography>
       </Box>
+      <Copyright sx={{ mt: 8, mb: 4 }} />
         </>
     )
 }

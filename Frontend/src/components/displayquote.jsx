@@ -4,7 +4,8 @@ import Link from '@mui/material/Link';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import {useLocation} from 'react-router-dom'
-import Menu from '../pages/menu';
+import Menu from './menu';
+import Copyright from './copyright';
 export default function Display() {
   const location = useLocation();
   const receivedData = location.state;
@@ -46,7 +47,8 @@ export default function Display() {
       </Box>
       <Link href="/Quote" variant="body2" underline='none'>
           <Typography variant='h5'  fontWeight="600">{"<< Back"}</Typography>
-        </Link>
+      </Link>
+      <Copyright sx={{ mt: 8, mb: 4 }} />
         </>
     )
 }

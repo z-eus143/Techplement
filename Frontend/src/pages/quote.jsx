@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cardview from "../components/cardview";
-import Menu from "./menu";
+import Menu from "../components/menu";
 import Skeletongrid from '../components/skeletoncomponent';
+import Copyright from '../components/copyright';
 const baseUrl = import.meta.env.VITE_PROD_BASE_URL;
 
 export default function Quote() {
@@ -24,6 +25,7 @@ export default function Quote() {
     <>
     <Menu/>
     <GridView isLoading={isLoading} data={quotes}/>
+    <Copyright sx={{ mt: 8, mb: 4 }} />
     </>
   )
 }

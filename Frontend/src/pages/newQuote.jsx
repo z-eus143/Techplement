@@ -2,7 +2,8 @@ import React from 'react';
 import QuoteForm from '../components/addnewquote';
 import { Button, Container, Typography } from '@mui/material';
 import axios from 'axios';
-import Menu from "./menu";
+import Menu from "../components/menu";
+import Copyright from '../components/copyright';
 const baseUrl = import.meta.env.VITE_PROD_BASE_URL;
 
 const NewQuote = () => {
@@ -37,6 +38,7 @@ const NewQuote = () => {
       <Button onClick={() => {setvisible(true)}} type="submit" variant="contained" color="primary">Add</Button>
       </>}
     </Container>
+    <Copyright sx={{ mt: 8, mb: 4 }} />
     </>
   );
 };

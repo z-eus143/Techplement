@@ -1,4 +1,4 @@
-import SearchAppBar from "../components/appbar";
+import SearchAppBar from "./appbar";
 
 export default function Menu() {
   return(
