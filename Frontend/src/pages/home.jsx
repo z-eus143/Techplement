@@ -40,7 +40,7 @@ export default function Home() {
           gutterBottom
           sx={{ fontSize: { xs: '2rem', sm: '3rem', md: '4rem' } }}
         >
-        {quotes.quote || <Skeleton/>}
+        {quotes.quote || <Skeleton style={{width : "80%" , height : "8rem"}}/>}
         </Typography>
         <Typography
           variant="h5"
@@ -52,7 +52,7 @@ export default function Home() {
             fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }
             }}
         >
-        { "~ "+quotes.writerName || <Skeleton/>}
+        ~ {quotes.writerName || <Skeleton style={{ width : "10%" }}/>}
         </Typography>
       </Box>
         </>
