@@ -1,7 +1,6 @@
 import Home from "../pages/home";
 import Quote from "../pages/quote";
 import {BrowserRouter , Routes , Route} from 'react-router-dom'
-import SavedCardview from "../pages/saved";
 import SignIn from "../pages/signin";
 import SignUp from "../pages/signup";
 import NewQuote from "../pages/newQuote";
