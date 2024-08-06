@@ -74,13 +74,6 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
 
           <ListItem>
-            <ListItemButton onClick={() => navigate("/SavedQuote")}>
-              <ListItemIcon><BookmarkAddIcon /></ListItemIcon>
-              <ListItemText primary="Saved Quotes"/>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
             <ListItemButton onClick={() => localStorage.removeItem('id')}>
               <ListItemIcon><LogoutIcon /></ListItemIcon>
               <ListItemText primary="SignOut"/>

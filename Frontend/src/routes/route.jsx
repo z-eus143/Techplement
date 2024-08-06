@@ -5,6 +5,7 @@ import SavedCardview from "../pages/saved";
 import SignIn from "../pages/signin";
 import SignUp from "../pages/signup";
 import NewQuote from "../pages/newQuote";
+import Display from "../components/displayquote";
 export default function PageRoute() {
     return(
         <>
@@ -15,13 +16,13 @@ export default function PageRoute() {
       <Route
       path="/Quote" element={<Quote/>}/>
      <Route
-      path="/SavedQuote" element={<SavedCardview/>}/>
-     <Route
       path="/SignIn" element={<SignIn/>}/>
       <Route
       path="/SignUp" element={<SignUp/>}/>
       <Route
       path="/Newquote" element={<NewQuote/>}/>
+      <Route
+      path="/displayquote" element={<Display/>}/>
     </Routes>
     </BrowserRouter>
         </>
