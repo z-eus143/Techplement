@@ -38,7 +38,7 @@ export default function Home() {
         <Typography
           variant="h1"
           gutterBottom
-          sx={{ fontSize: { xs: '2rem', sm: '3rem', md: '4rem' } }}
+          sx={{ fontSize: { xs: '2rem', sm: '3rem', md: '4rem' , opacity : '0.5'} , fontWeight : "600"}}
         >
         {quotes.quote || <Skeleton style={{width : "80%" , height : "8rem"}}/>}
         </Typography>
@@ -52,7 +52,7 @@ export default function Home() {
             fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }
             }}
         >
-        ~ {quotes.writerName || <Skeleton style={{ width : "10%" }}/>}
+        ~ Posted By {quotes.writerName || <Skeleton style={{ width : "10%" }}/>}
         </Typography>
       </Box>
         </>

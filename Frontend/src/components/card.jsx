@@ -20,7 +20,7 @@ export default function MyCard({ title, description, id }) {
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" height="5rem" paddingTop="5px">
             {description}
           </Typography>
         </CardContent>
