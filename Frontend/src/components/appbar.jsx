@@ -7,7 +7,9 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import SwipeableTemporaryDrawer from './SwipeableTemporaryDrawer';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+const baseUrl = import.meta.env.VITE_PROD_BASE_URL;
 
 export default function SearchAppBar() {
 
@@ -55,10 +57,18 @@ export default function SearchAppBar() {
         },
       }));
 
-      const handleKeyPress = (event) => {
+      const handleKeyPress = async (event) => {
         if (event.key === 'Enter' && event.target.value) {
-            navigate("/Quote")
-            console.log(event.target.value)
+          await axios.get(`${baseUrl}/Quote/show`)
+          .then(response => {
+          const quotes = response.data
+          const lowerCaseWriterName = event.target.value.toLowerCase()
+          const data = quotes.filter(quote => quote.writerName.toLowerCase().includes(lowerCaseWriterName))
+          navigate("/search" , {state : {data}})
+          })
+          .catch(error => {
+          console.error('Error fetching data:', error);
+          });
         }
     };
 

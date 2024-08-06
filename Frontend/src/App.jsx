@@ -5,6 +5,7 @@ import SignIn from "./pages/signin";
 import SignUp from "./pages/signup";
 import NewQuote from "./pages/newQuote";
 import Display from "./components/displayquote";
+import Search from "./pages/search";
 export default function App() {
     return(
         <>
@@ -22,6 +23,8 @@ export default function App() {
       path="/Newquote" element={<NewQuote/>}/>
       <Route
       path="/displayquote" element={<Display/>}/>
+      <Route
+      path="/search" element={<Search/>}/>
     </Routes>
     </BrowserRouter>
         </>
