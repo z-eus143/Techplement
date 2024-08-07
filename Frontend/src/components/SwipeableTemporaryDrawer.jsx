@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import LogoutIcon from '@mui/icons-material/Logout';
-import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import { useToast } from '../context/Toastcontext';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
@@ -19,6 +19,7 @@ import LoginIcon from '@mui/icons-material/Login';
 export default function SwipeableTemporaryDrawer() {
   
     const navigate = useNavigate();
+    const addToast = useToast();
   
     const [state, setState] = React.useState({
       right: false,
@@ -74,7 +75,7 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
 
           <ListItem>
-            <ListItemButton onClick={() => localStorage.removeItem('id')}>
+            <ListItemButton onClick={() => {localStorage.removeItem('id'); localStorage.removeItem('name') ; addToast("Logged Out!" , 'success'); }}>
               <ListItemIcon><LogoutIcon /></ListItemIcon>
               <ListItemText primary="SignOut"/>
             </ListItemButton>
