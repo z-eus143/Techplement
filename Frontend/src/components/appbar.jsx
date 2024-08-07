@@ -9,11 +9,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import SwipeableTemporaryDrawer from './SwipeableTemporaryDrawer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useToast } from '../context/Toastcontext';
 const baseUrl = import.meta.env.VITE_PROD_BASE_URL;
 
 export default function SearchAppBar() {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const addToast = useToast();
 
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
@@ -58,18 +60,25 @@ export default function SearchAppBar() {
       }));
 
       const handleKeyPress = async (event) => {
-        if (event.key === 'Enter' && event.target.value) {
-          await axios.get(`${baseUrl}/Quote/show`)
-          .then(response => {
-          const quotes = response.data
-          const lowerCaseWriterName = event.target.value.toLowerCase()
-          const data = quotes.filter(quote => quote.writerName.toLowerCase().includes(lowerCaseWriterName))
-          navigate("/search" , {state : {data}})
-          })
-          .catch(error => {
-          console.error('Error fetching data:', error);
-          });
-        }
+        if (event.key === 'Enter') {
+          const userInput = event.target.value;
+          const namePattern = /^[\w]+ [\w]+$/;         
+          if (namePattern.test(userInput)) {
+              try {
+                  const response = await axios.get(`${baseUrl}/Quote/show`);
+                  const quotes = response.data;
+                  const lowerCaseWriterName = userInput.toLowerCase();
+                  const data = quotes.filter(quote => 
+                      quote.writerName.toLowerCase().includes(lowerCaseWriterName)
+                  );
+                  navigate("/search", { state: { data } });
+              } catch (error) {
+                  console.error('Error fetching data:', error);
+              }
+          } else {
+              addToast('Invalid input format. Please enter a name in "Firstname Lastname" format. to search Quote' , 'error');
+          }
+      }
     };
 
   return (
@@ -100,3 +109,4 @@ export default function SearchAppBar() {
     </Box>
   );
 }
+

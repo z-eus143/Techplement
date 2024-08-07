@@ -92,6 +92,7 @@ export default function SignUp() {
         const res = await axios.post(`${baseUrl}/Signup`, formValues);
         localStorage.setItem('id', res.data.id);
         localStorage.setItem('name', `${res.data.firstName} ${res.data.lastName}`);
+        addToast("Logged In" , 'success');
         navigate("/");
       } catch (error) {
         console.error('Error submitting form:', error);

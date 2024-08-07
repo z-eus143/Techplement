@@ -34,6 +34,7 @@ export default function SignIn() {
       const res = await axios.post(`${baseUrl}/signup/signin`, formdata);
       localStorage.setItem('id' , res.data.id);
       localStorage.setItem('name' , res.data.firstname +" "+res.data.lastName);
+      addToast("Logged In" , 'success');
       navigate("/");
     } catch (error) {
       addToast(error.response.data.message , 'error');
