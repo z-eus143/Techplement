@@ -27,16 +27,12 @@ export default function Skeletongrid({index}) {
             }}
           >
             <CardContent>
-              <Skeleton height="5rem"/>
+              <Skeleton height="6rem"/>
               <Skeleton width="70%" height="100%" />
-              <CardActions style={{ paddingTop: '20px', paddingRight: '10px' }}>
-                <Button size="small" variant="contained">
-                  <Skeleton width="100%" />
-                </Button>
-                <Button size="small" variant="contained">
-                  <Skeleton width="100%" />
-                </Button>
-                </CardActions>
+              <Skeleton width="70%" height="100%" />
+              <CardActions style={{ paddingTop: '30px' }}>
+                  <Skeleton width="50%" />
+              </CardActions>
             </CardContent>
           </Card>
         </Grid>

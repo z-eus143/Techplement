@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { useToast } from '../context/Toastcontext';
 import axios from 'axios';
 import Menu from "../components/menu";
 import Copyright from '../components/copyright';
@@ -21,6 +22,7 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const addToast = useToast();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -37,7 +39,7 @@ export default function SignUp() {
       navigate("/");
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert("Email Already Exist");
+      addToast(error.response.data.message , 'error');
     }
   };
 
@@ -108,7 +110,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspirational quote everyday."
+                  label="Remember me"
                 />
               </Grid>
             </Grid>

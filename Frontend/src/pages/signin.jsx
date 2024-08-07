@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useToast } from '../context/Toastcontext';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Menu from "../components/menu";
 import Copyright from '../components/copyright';
@@ -20,6 +21,7 @@ const baseUrl = import.meta.env.VITE_PROD_BASE_URL;
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const addToast = useToast()
   const navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,7 +36,8 @@ export default function SignIn() {
       localStorage.setItem('name' , res.data.firstname +" "+res.data.lastName);
       navigate("/");
     } catch (error) {
-      console.error('Error submitting form:', error);
+      addToast(error.response.data.message , 'error');
+      console.error('Error submitting form:', error);      
     }
   };
 
